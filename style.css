@@ -548,13 +548,14 @@ nav {
 
     /* Close Button Styling */
     .close-btn {
-        position: absolute;
-        top: 20px;
-        left: 20px;
-        font-size: 40px;
-        cursor: pointer;
-        color: #333;
-        transition: color 0.3s ease;
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      font-size: 60px;
+      cursor: pointer;
+      color: red; /* Make the 'X' red */
+      background-color: transparent; /* Remove background */
+      transition: color 0.3s ease;
     }
 
     .close-btn:hover {
@@ -729,18 +730,48 @@ nav {
   background-color: #45a049;
 }
 
-/* Styling for Load Profile Button */
-.button {
-  background-color: #4CAF50;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 4px;
-  cursor: pointer;
-}
+/* Mobile-specific styling for Profile Box buttons */
+@media (max-width: 768px) {
+  #profile-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px; /* Space between buttons */
+  }
 
-.button:hover {
-  background-color: #45a049;
+  #profile-box .profile-btn {
+      width: 80%; /* Adjust button width */
+      margin-top: 10px; /* Extra spacing for visual clarity */
+      padding: 15px 10px; /* Reduce padding to prevent overlap */
+  }
 }
+/* Mobile-specific styling for Login and Signup buttons */
+@media (max-width: 768px) {
+  .login-signup-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+      padding: 10px;
+  }
 
-  
-  
+  .login-signup-container .login-btn,
+  .login-signup-container .signup-btn {
+      flex: 1;
+      max-width: 45%;
+      padding: 10px 0;
+      font-size: 14px;
+      box-sizing: border-box;
+      border-radius: 8px; /* Adds rounded corners */
+      transition: background-color 0.3s, transform 0.3s; /* Smooth transition effects */
+  }
+
+  /* Optional: Hover effect for smoother color transition */
+  .login-signup-container .login-btn:hover,
+  .login-signup-container .signup-btn:hover {
+      background-color: #45a049; /* Adjust hover color to match other buttons */
+      transform: translateY(-2px); /* Adds slight lift on hover */
+      box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+  }
+}
