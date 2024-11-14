@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Restool - Your Resume Tool</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<!-- Header / Navigation -->
+<header>
+  <div class="navbar">
+      <!-- Logo Section -->
+      <div class="logo">
+          <h1>Restool</h1>
+      </div>
+
+      <!-- Hidden Checkbox for Toggling the Hamburger Menu -->
+      <input type="checkbox" class="menu-toggle" id="menu-toggle">
+
+      <!-- Hamburger Menu Icon (only visible on mobile) -->
+      <label for="menu-toggle" class="hamburger">&#9776;</label>
+
+      <!-- Navigation Links -->
+      <nav>
+          <ul class="nav-links">
+              <!-- Close Button -->
+              <label for="menu-toggle" class="close-btn">&#10006;</label>
+
+              <li><a href="#home">Home</a></li>
+              <li><a href="#features">Features</a></li>
+              <li><a href="#pricing">Pricing</a></li>
+              <li><a href="#contact">Contact</a></li>
+              <li><a href="#about">About Us</a></li>
+          </ul>
+      </nav>
+
+      <!-- Login and Signup Buttons -->
+      <div class="auth-buttons">
+          <a href="#login" class="button login-btn">Log In</a>
+          <a href="#signup" class="button signup-btn">Sign Up</a>
+      </div>
+  </div>
+</header>
+
+ <!-- Hero Section -->
+<section id="hero">
+    <div class="hero-content">
+      <h2>Effortlessly Create<br>Tailored Resumes</h2>
+      <p>Customizing your resume according to the job description<br> increases your callback chance by 37%.</p>
+      <button class="cta-button" onclick="document.getElementById('profile-job').scrollIntoView({ behavior: 'smooth' });">Get Started</button>
+    </div>
+  </section>
+
+<!-- Main Content Section -->
+<main>
+  <section id="profile-job">
+    <div class="container">
+      <!-- Profile Box -->
+      <div class="box" id="profile-box">
+        <h2>Your Profile</h2>
+        <a href="create-profile.html" class="button">Create New Profile</a>
+        <!-- Trigger Button for Modal -->
+        <label for="profileModalCheckbox" class="button">Load Profile</label>
+        <form action="/load_profile" method="POST"></form>
+      </div>
+
+      <!-- Modal Checkbox (Hidden) -->
+      <input type="checkbox" id="profileModalCheckbox" class="modal-checkbox">
+
+      <!-- Modal Structure -->
+      <div class="modal">
+        <div class="modal-content">
+          <!-- Close Button -->
+          <label class="close-btn" for="profileModalCheckbox">&#10006;</label>
+
+          <!-- Modal Form -->
+<label for="profileModalCheckbox" style="position: absolute; top: 10px; left: 10px; color: red; font-size: 40px; cursor: pointer;">&times;</label>
+<h2>Full Name</h2>
+<input type="text" id="name" class="input-field" placeholder="Enter Full Name" />
+<button class="button" onclick="loadProfile()">Load Now</button>
+
+<script>
+  // Function to load the profile
+  function loadProfile() {
+    var name = document.getElementById('name').value.trim();
+
+    if (name === "") {
+      alert("Please enter a name.");
+      return;
+    }
+
+    // Call backend to check if profile exists
+    fetch(`/load-profile?name=${name}`)
+      .then(response => response.json())
+      .then(data => {
+        if (data.found) {
+          // Update the home page with the first name
+          document.getElementById('loadProfileBtn').innerText = data.firstName;
+          // Close the modal
+          document.getElementById('profileModalCheckbox').checked = false;
+        } else {
+          alert("Profile not found");
+        }
+      })
+      .catch(err => {
+        console.error("Error loading profile:", err);
+      });
+  }
+</script>
+
+        </div>
+      </div>
+
+      <!-- Job Application Box -->
+      <div class="box" id="job-box">
+        <h2>Job You Are Looking to Apply</h2>
+        <form action="/generate_resume" method="POST"></form>
+        <input type="text" class="input-field" id="company-name" placeholder="Company Name">
+        <input type="text" class="input-field" id="job-title" placeholder="Job Title">
+        <textarea class="input-field" id="job-description" placeholder="Job Description" rows="4" style="resize: none;"></textarea>
+      </div>
+
+      <!-- Generate Resume Button -->
+      <button class="button generate-resume" onclick="generateResume()">Generate Resume</button>
+    </div>
+  </section>
+</main>
+
+
+    <!-- Features Section -->
+    <section id="ai-resume-builder">
+        <div class="ai-content">
+          <h2>AI-Powered Resume Customization</h2>
+          <p>Effortlessly customize your resume for each job application using advanced AI technology. Analyze job descriptions, identify critical keywords, and strategically tailor your resume to highlight the most relevant skills and experiences. Our AI tools provide personalized recommendations, helping you create a resume that stands out and maximizes your chances of landing interviews.</p>
+          <button class="cta-button" onclick="document.getElementById('profile-job').scrollIntoView({ behavior: 'smooth' });">Generate Resume with AI</button>
+        </div>
+      </section>
+      
+
+
+    <!-- Pricing Section -->
+    <section id="pricing">
+      <h2>Pricing Plans</h2>
+      <div class="pricing-table">
+        <div class="pricing-option">
+          <h3>Basic</h3>
+          <p>Free</p>
+          <p>Access to all features with limited resume downloads.</p>
+          <button class="button">Choose Plan</button>
+        </div>
+        <div class="pricing-option">
+          <h3>Pro</h3>
+          <p>$9.99/month</p>
+          <p>Unlimited downloads, premium templates, and priority support.</p>
+          <button class="button">Choose Plan</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section about">
+        <h3>About Restool</h3>
+        <p>Restool is dedicated to helping job seekers streamline their application process by creating tailored resumes and managing job profiles efficiently.</p>
+      </div>
+      <div class="footer-section links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#about">About</a></li>
+        </ul>
+      </div>
+      <div class="footer-section contact">
+        <h3>Contact Us</h3>
+        <p>Email: info@restool.com</p>
+        <p>Phone: +91 6002738265</p>
+        <p>Address: Palo Alto,CA,USA</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 Restool. All rights reserved.</p>
+    </div>
+  </footer>
+
+<!-- JavaScript for Profile Loading -->
+<script src="loadProfile.js"></script>
+<script>
+  function createProfile() {
+    alert("Create New Profile button clicked!");
+    // Add logic to create new profile if needed
+  }
+
+  function generateResume() {
+    alert("Generate Resume button clicked!");
+    // Add logic to generate resume if needed
+  }
+</script>
+</body>
+</html>
