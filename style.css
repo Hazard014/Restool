@@ -115,64 +115,94 @@ nav {
     transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s, color 0.3s;
 }
 
+/* Container to align buttons properly */
+.navbar-buttons {
+  display: flex;
+  gap: 15px; /* Adjust spacing between buttons */
+}
+
 /* Log In Button with outline and hover animation */
 .login-btn {
-    color: #4CAF50;
-    border: 2px solid #4CAF50;
-    position: relative;
-    overflow: hidden;
+  padding: 10px 20px; /* Add padding for a consistent button size */
+  font-size: 16px;
+  font-weight: bold;
+  color: #4CAF50;
+  border: 2px solid #4CAF50;
+  border-radius: 5px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: color 0.3s, transform 0.3s, box-shadow 0.3s;
 }
 
 .login-btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background-color: #5e665f;
-    transition: left 0.3s;
-    z-index: -1;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: #5e665f;
+  transition: left 0.3s ease;
+  z-index: -1;
 }
 
 .login-btn:hover::before {
-    left: 0;
+  left: 0;
 }
 
 .login-btn:hover {
-    color: white;
-    transform: translateY(-2px); /* Adds a slight lifted effect */
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2); /* Adds shadow for lifted effect */
+  color: white;
+  transform: translateY(-2px); /* Adds a slight lifted effect */
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
 }
 
 /* Sign Up Button with solid background and hover animation */
 .signup-btn {
-    background-color: #4CAF50;
-    color: white;
-    border: 2px solid #4CAF50;
-    position: relative;
-    overflow: hidden;
+  padding: 10px 20px; /* Add padding for a consistent button size */
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #4CAF50;
+  color: white;
+  border: 2px solid #4CAF50;
+  border-radius: 5px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .signup-btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background-color: #5e665f;
-    transition: left 0.3s;
-    z-index: -1;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: #5e665f;
+  transition: left 0.3s ease;
+  z-index: -1;
 }
 
 .signup-btn:hover::before {
-    left: 0;
+  left: 0;
 }
 
 .signup-btn:hover {
-    transform: translateY(-2px); /* Adds a slight lifted effect */
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Media Query for Larger Screens */
+@media (min-width: 1024px) {
+  .navbar-buttons {
+      gap: 20px; /* Extra spacing for larger screens */
+  }
+
+  .login-btn, .signup-btn {
+      padding: 12px 24px;
+      font-size: 15px;
+  }
 }
 
    
