@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Form Page</title>
+  <link rel="stylesheet" href="assets/style.css">
+  <title>Contact Us</title>
   <style>
     /* Main Content Section */
     body {
@@ -91,13 +92,32 @@
       transform: translateY(-2px);
       box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
     }
+
+    /* Sticky Header */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background-color: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds shadow for clarity */
+    }
+
+    /* Adjust content to not overlap with sticky header */
+    main {
+      margin-top: 80px; /* Offset the height of the header */
+    }
   </style>
 </head>
 <body>
+  <!-- Header Placeholder -->
+  <div id="header-placeholder"></div>
+
+  <!-- Main Content -->
   <main>
     <section id="form-section">
       <div class="container">
-        <h2>Job Application Form</h2>
+        <h2>Contact Us Form</h2>
         <form action="#" method="POST">
           <!-- Name Field -->
           <div class="form-row">
@@ -129,5 +149,31 @@
       </div>
     </section>
   </main>
+
+  <!-- Footer Placeholder -->
+  <div id="footer-placeholder"></div>
+
+  <script>
+    // Function to dynamically load header and footer from index.html
+    fetch('index.html')
+      .then(response => response.text())
+      .then(html => {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+
+        // Extract and insert the header
+        const header = doc.querySelector('header');
+        if (header) {
+          document.getElementById('header-placeholder').innerHTML = header.outerHTML;
+        }
+
+        // Extract and insert the footer
+        const footer = doc.querySelector('footer');
+        if (footer) {
+          document.getElementById('footer-placeholder').innerHTML = footer.outerHTML;
+        }
+      })
+      .catch(error => console.error('Error loading header and footer:', error));
+  </script>
 </body>
 </html>
