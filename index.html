@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Restool - Your Resume Tool</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="assets/style.css">
   <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
@@ -30,8 +30,8 @@
               <label for="menu-toggle" class="close-btn">&#10006;</label>
 
               <li><a href="index.html">Home</a></li>
-              <li><a href="javascript:void(0);" onclick="document.getElementById('ai-resume-builder').scrollIntoView({ behavior: 'smooth' });">Features</a></li>
-              <li><a href="javascript:void(0);" onclick="document.getElementById('pricing').scrollIntoView({ behavior: 'smooth' });">Pricing</a></li>
+              <li><a href="index.html#ai-resume-builder">Features</a></li>
+              <li><a href="index.html#pricing">Pricing</a></li>
               <li><a href="Contact-us.html">Contact us</a></li>
               <li><a href="About-us.html">About Us</a></li>
           </ul>
@@ -321,23 +321,6 @@
       <p>&copy; 2024 Restool. All rights reserved.</p>
     </div>
   </footer>
-
-<!-- Google Sign-In Button -->
-<div id="g_id_onload"
-     data-client_id="YOUR_GOOGLE_CLIENT_ID"
-     data-callback="handleCredentialResponse">
-</div>
-<div class="g_id_signin" data-type="standard"></div>
-
-<script>
-  // Handle Google Credential Response
-  function handleCredentialResponse(response) {
-    console.log("Encoded JWT ID token: " + response.credential);
-    // Send the JWT token to your backend for verification
-    // Add further authentication handling logic here
-  }
-</script>
-
 
 <!-- JavaScript for Profile Loading -->
 <script src="loadProfile.js"></script>
